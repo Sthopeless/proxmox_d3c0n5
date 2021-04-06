@@ -66,9 +66,10 @@ strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >
 
 # deconz step 3
 msg "[      Deconz step #3...      ]"
-FOLDER_DECONZ="/deconz_tmp/deconz.deb"
+FOLDER_DECONZ="/deconz_tmp/"
 mkdir -p $(dirname $FOLDER_DECONZ)
-wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O $FOLDER_DECONZ
+cd $FOLDER_DECONZ
+wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
 
 # Customize container
 msg "Customizing container..."
