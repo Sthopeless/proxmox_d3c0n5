@@ -23,12 +23,12 @@ function msg() {
   echo -e "$TEXT"
 }
 
-# # Prepare container OS
-# msg "Setting up container OS..."
-# sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
-# locale-gen >/dev/null
-# apt-get -y purge openssh-{client,server} >/dev/null
-# apt-get autoremove >/dev/null
+# Prepare container OS
+msg "Setting up container OS..."
+sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
+locale-gen >/dev/null
+apt-get -y purge openssh-{client,server} >/dev/null
+apt-get autoremove >/dev/null
 
 # Update container OS
 msg "Updating container OS..."
@@ -57,12 +57,12 @@ apt-get -qqy xfonts-scalable &>/dev/null
 # deconz step 2
 msg "[      Deconz step #2...      ]"
 apt-get clean  >/dev/null
-rm -rf /var/lib/apt/lists/* >/dev/null
+rm -rf /var/lib/apt/lists/*
 apt-get update >/dev/null
 apt-get -qqy install binutils >/dev/null 
 apt-get clean >/dev/null 
-rm -rf /var/lib/apt/lists/* >/dev/null 
-strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
+rm -rf /var/lib/apt/lists/*
+strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
 
 # deconz step 3
 msg "[      Deconz step #3...      ]"
