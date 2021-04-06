@@ -36,7 +36,7 @@ apt-get update >/dev/null
 apt-get -qqy upgrade &>/dev/null
 
 # deCONZ step 1
-msg "[      deCONZ step #1...      ]"
+msg "[   deCONZ step #1...   ]"
 apt-get -qqy install curl >/dev/null
 apt-get -qqy install kmod >/dev/null
 apt-get -qqy install libcap2-bin >/dev/null
@@ -56,7 +56,7 @@ apt-get -qqy install xfonts-base >/dev/null
 apt-get -qqy install xfonts-scalable &>/dev/null
 
 # deCONZ step 2
-msg "[      deCONZ step #2...      ]"
+msg "[   deCONZ step #2...   ]"
 apt-get clean  >/dev/null
 rm -rf /var/lib/apt/lists/*
 apt-get update >/dev/null
@@ -66,7 +66,7 @@ rm -rf /var/lib/apt/lists/*
 strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
 
 # deCONZ step 3
-msg "[      deCONZ step #3...      ]"
+msg "[   deCONZ step #3...   ]"
 
 # Customize container
 msg "Customizing container..."
