@@ -73,7 +73,7 @@ DECONZ_CRON="/var/spool/cron/root"
 cat << EOF > $DECONZ_CRON
 @reboot sh /start.sh &
 EOF
-chmod +x /deconz_tmp/firmware-update.sh &>/dev/null
+chmod +x /start.sh &>/dev/null
 dpkg -i /deconz.deb &>/dev/null
 rm -f /deconz.deb &>/dev/null
 chown root:root /usr/bin/deCONZ* &>/dev/null
