@@ -69,7 +69,7 @@ msg "[      Deconz step #3...      ]"
 FOLDER_DECONZ="/deconz_tmp/"
 mkdir -p $(dirname $FOLDER_DECONZ)
 cd $FOLDER_DECONZ
-wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
+wget -qqL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
 
 # Customize container
 msg "Customizing container..."
