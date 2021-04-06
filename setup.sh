@@ -36,7 +36,7 @@ apt-get update >/dev/null
 apt-get -qqy upgrade &>/dev/null
 
 # deconz step 1
-msg "Deconz step #1..."
+msg "[      Deconz step #1...      ]"
 apt-get -qqy install kmod >/dev/null
 apt-get -qqy libcap2-bin >/dev/null
 apt-get -qqy libqt5core5a >/dev/null
@@ -55,7 +55,7 @@ apt-get -qqy xfonts-base >/dev/null
 apt-get -qqy xfonts-scalable &>/dev/null
 
 # deconz step 2
-msg "Deconz step #2..."
+msg "[      Deconz step #2...      ]"
 apt-get clean  >/dev/null
 rm -rf /var/lib/apt/lists/* >/dev/null
 apt-get update >/dev/null
@@ -65,8 +65,8 @@ rm -rf /var/lib/apt/lists/* >/dev/null
 strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
 
 # deconz step 3
-msg "Deconz step #3..."
-FOLDER_DECONZ='/deconz_tmp/deconz.deb'
+msg "[      Deconz step #3...      ]"
+FOLDER_DECONZ="/deconz_tmp/deconz.deb"
 mkdir -p $(dirname $FOLDER_DECONZ)
 wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O $FOLDER_DECONZ
 
