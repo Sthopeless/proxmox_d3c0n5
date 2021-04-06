@@ -60,6 +60,23 @@ apt-get -qqy install \
     xfonts-base \
     xfonts-scalable &>/dev/null
 
+# deconz step 2
+msg "Deconz step2..."
+apt-get clean  >/dev/null
+rm -rf /var/lib/apt/lists/* >/dev/null
+apt-get update >/dev/null
+apt-get -qqy install binutils 
+apt-get clean >/dev/null 
+rm -rf /var/lib/apt/lists/* >/dev/null 
+strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
+
+# deconz step 3
+msg "Deconz step3..."
+FOLDER_TMPDECONZ='/deconz_tmp'
+mkdir -p $(dirname $FOLDER_TMPDECONZ)
+wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O /deconz_tmp/deconz.deb
+# wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
+
 # Customize container
 msg "Customizing container..."
 rm /etc/motd # Remove message of the day after login
