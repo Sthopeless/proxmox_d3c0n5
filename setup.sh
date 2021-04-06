@@ -38,21 +38,21 @@ apt-get -qqy upgrade &>/dev/null
 # deconz step 1
 msg "[      Deconz step #1...      ]"
 apt-get -qqy install kmod >/dev/null
-apt-get -qqy libcap2-bin >/dev/null
-apt-get -qqy libqt5core5a >/dev/null
-apt-get -qqy libqt5gui5 >/dev/null
-apt-get -qqy libqt5network5 >/dev/null
-apt-get -qqy libqt5serialport5 >/dev/null
-apt-get -qqy libqt5sql5 >/dev/null
-apt-get -qqy libqt5websockets5 >/dev/null
-apt-get -qqy libqt5widgets5 >/dev/null
-apt-get -qqy lsof >/dev/null
-apt-get -qqy sqlite3 >/dev/null
-apt-get -qqy tigervnc-standalone-server >/dev/null
-apt-get -qqy tigervnc-common >/dev/null
-apt-get -qqy wmii >/dev/null
-apt-get -qqy xfonts-base >/dev/null
-apt-get -qqy xfonts-scalable &>/dev/null
+apt-get -qqy install libcap2-bin >/dev/null
+apt-get -qqy install libqt5core5a >/dev/null
+apt-get -qqy install libqt5gui5 >/dev/null
+apt-get -qqy install libqt5network5 >/dev/null
+apt-get -qqy install libqt5serialport5 >/dev/null
+apt-get -qqy install libqt5sql5 >/dev/null
+apt-get -qqy install libqt5websockets5 >/dev/null
+apt-get -qqy install libqt5widgets5 >/dev/null
+apt-get -qqy install lsof >/dev/null
+apt-get -qqy install sqlite3 >/dev/null
+apt-get -qqy install tigervnc-standalone-server >/dev/null
+apt-get -qqy install tigervnc-common >/dev/null
+apt-get -qqy install wmii >/dev/null
+apt-get -qqy install xfonts-base >/dev/null
+apt-get -qqy install xfonts-scalable &>/dev/null
 
 # deconz step 2
 msg "[      Deconz step #2...      ]"
