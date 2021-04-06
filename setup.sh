@@ -27,20 +27,13 @@ function msg() {
 msg "Setting up container OS..."
 sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
 locale-gen >/dev/null
-apt-get update >/dev/null
-apt-get -qqy upgrade &>/dev/null
-# apt-get -y purge openssh-{client,server} >/dev/null
+apt-get -y purge openssh-{client,server} >/dev/null
 apt-get autoremove >/dev/null
 
-# # Update container OS
-# msg "Updating container OS..."
-# apt-get update >/dev/null
-# apt-get -qqy upgrade &>/dev/null
-
-# # Install prerequisites
-# msg "Installing prerequisites..."
-# apt-get -qqy install \
-#     curl &>/dev/null
+# Update container OS
+msg "Updating container OS..."
+apt-get update >/dev/null
+apt-get -qqy upgrade &>/dev/null
 
 # deconz step 1
 msg "Deconz step1..."
@@ -77,8 +70,7 @@ strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >
 msg "Deconz step3..."
 FOLDER_TMPDECONZ='/deconz_tmp'
 mkdir -p $(dirname $FOLDER_TMPDECONZ)
-cd /deconz_tmp
-wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O deconz.deb
+wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O /deconz_tmp/deconz.deb
 # wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
 
 # Customize container
