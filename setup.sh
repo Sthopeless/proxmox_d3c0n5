@@ -40,6 +40,26 @@ msg "Installing prerequisites..."
 apt-get -qqy install \
     curl &>/dev/null
 
+# deCONZ step1
+msg "deCONZ step #1"
+apt-get -qqy install \
+    kmod \
+    libcap2-bin \
+    libqt5core5a \
+    libqt5gui5 \
+    libqt5network5 \
+    libqt5serialport5 \
+    libqt5sql5 \
+    libqt5websockets5 \
+    libqt5widgets5 \
+    lsof \
+    sqlite3 \
+    tigervnc-standalone-server \
+    tigervnc-common \
+    wmii \
+    xfonts-base \
+    xfonts-scalable &>/dev/null
+
 # Customize container
 msg "Customizing container..."
 rm /etc/motd # Remove message of the day after login
