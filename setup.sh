@@ -75,10 +75,9 @@ strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >
 msg "Deconz step3..."
 FOLDER_TMPDECONZ='/deconz_tmp'
 mkdir -p $(dirname $FOLDER_TMPDECONZ)
-cd /deconz_tmp >/dev/null 
-wget https://github.com/marthoc/docker-deconz/raw/master/amd64/root/start.sh
-wget https://github.com/marthoc/docker-deconz/raw/master/amd64/root/firmware-update.sh
-wget http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
+cd /deconz_tmp
+wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O deconz.deb
+# wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
 
 # Customize container
 msg "Customizing container..."
