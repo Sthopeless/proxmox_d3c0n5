@@ -36,39 +36,39 @@ apt-get update >/dev/null
 apt-get -qqy upgrade &>/dev/null
 
 # deconz step 1
-msg "Deconz step1..."
-apt-get -qqy install kmod
-apt-get -qqy libcap2-bin
-apt-get -qqy libqt5core5a
-apt-get -qqy libqt5gui5
-apt-get -qqy libqt5network5
-apt-get -qqy libqt5serialport5
-apt-get -qqy libqt5sql5
-apt-get -qqy libqt5websockets5
-apt-get -qqy libqt5widgets5
-apt-get -qqy lsof
-apt-get -qqy sqlite3
-apt-get -qqy tigervnc-standalone-server
-apt-get -qqy tigervnc-common
-apt-get -qqy wmii
-apt-get -qqy xfonts-base
+msg "Deconz step #1..."
+apt-get -qqy install kmod >/dev/null
+apt-get -qqy libcap2-bin >/dev/null
+apt-get -qqy libqt5core5a >/dev/null
+apt-get -qqy libqt5gui5 >/dev/null
+apt-get -qqy libqt5network5 >/dev/null
+apt-get -qqy libqt5serialport5 >/dev/null
+apt-get -qqy libqt5sql5 >/dev/null
+apt-get -qqy libqt5websockets5 >/dev/null
+apt-get -qqy libqt5widgets5 >/dev/null
+apt-get -qqy lsof >/dev/null
+apt-get -qqy sqlite3 >/dev/null
+apt-get -qqy tigervnc-standalone-server >/dev/null
+apt-get -qqy tigervnc-common >/dev/null
+apt-get -qqy wmii >/dev/null
+apt-get -qqy xfonts-base >/dev/null
 apt-get -qqy xfonts-scalable &>/dev/null
 
 # deconz step 2
-msg "Deconz step2..."
+msg "Deconz step #2..."
 apt-get clean  >/dev/null
 rm -rf /var/lib/apt/lists/* >/dev/null
 apt-get update >/dev/null
-apt-get -qqy install binutils 
+apt-get -qqy install binutils >/dev/null 
 apt-get clean >/dev/null 
 rm -rf /var/lib/apt/lists/* >/dev/null 
 strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
 
 # deconz step 3
-msg "Deconz step3..."
-FOLDER_TMPDECONZ='/deconz_tmp'
-mkdir -p $(dirname $FOLDER_TMPDECONZ)
-wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O /deconz_tmp/deconz.deb
+msg "Deconz step #3..."
+FOLDER_DECONZ='/deconz_tmp/deconz.deb'
+mkdir -p $(dirname $FOLDER_DECONZ)
+wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O $FOLDER_DECONZ
 
 # Customize container
 msg "Customizing container..."
