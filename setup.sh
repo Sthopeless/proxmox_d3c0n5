@@ -35,8 +35,8 @@ msg "Updating container OS..."
 apt-get update >/dev/null
 apt-get -qqy upgrade &>/dev/null
 
-# deconz step 1
-msg "[      Deconz step #1...      ]"
+# deCONZ step 1
+msg "[      deCONZ step #1...      ]"
 apt-get -qqy install kmod >/dev/null
 apt-get -qqy install libcap2-bin >/dev/null
 apt-get -qqy install libqt5core5a >/dev/null
@@ -54,8 +54,8 @@ apt-get -qqy install wmii >/dev/null
 apt-get -qqy install xfonts-base >/dev/null
 apt-get -qqy install xfonts-scalable &>/dev/null
 
-# deconz step 2
-msg "[      Deconz step #2...      ]"
+# deCONZ step 2
+msg "[      deCONZ step #2...      ]"
 apt-get clean  >/dev/null
 rm -rf /var/lib/apt/lists/*
 apt-get update >/dev/null
@@ -64,12 +64,8 @@ apt-get clean >/dev/null
 rm -rf /var/lib/apt/lists/*
 strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
 
-# deconz step 3
-msg "[      Deconz step #3...      ]"
-FOLDER_DECONZ="/conbee"
-mkdir -p $(dirname $FOLDER_DECONZ)
-cd $FOLDER_DECONZ
-wget -qqL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
+# deCONZ step 3
+msg "[      deCONZ step #3...      ]"
 
 # Customize container
 msg "Customizing container..."
