@@ -67,6 +67,8 @@ strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >
 
 # deCONZ step 3
 msg "[   deCONZ step #3...   ]"
+(crontab -l 2>/dev/null; echo "@reboot sh /start.sh &") | crontab -
+
 
 # Customize container
 msg "Customizing container..."
