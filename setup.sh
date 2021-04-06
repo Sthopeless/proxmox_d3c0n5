@@ -37,6 +37,7 @@ apt-get -qqy upgrade &>/dev/null
 
 # deCONZ step 1
 msg "[      deCONZ step #1...      ]"
+apt-get -qqy install curl >/dev/null
 apt-get -qqy install kmod >/dev/null
 apt-get -qqy install libcap2-bin >/dev/null
 apt-get -qqy install libqt5core5a >/dev/null
