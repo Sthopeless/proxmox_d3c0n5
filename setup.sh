@@ -67,8 +67,13 @@ strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >
 
 # deCONZ step 3
 msg "[   deCONZ step #3...   ]"
+DECONZ_OTAU="/root/otau"
+mkdir -p $(dirname $DECONZ_OTAU)
 (crontab -l 2>/dev/null; echo "@reboot sh /start.sh &") | crontab -
-
+chmod +x /deconz_tmp/firmware-update.sh &>/dev/null
+dpkg -i /deconz.deb &>/dev/null
+rm -f /deconz.deb &>/dev/null
+chown root:root /usr/bin/deCONZ* &>/dev/null
 
 # Customize container
 msg "Customizing container..."
