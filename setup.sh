@@ -28,7 +28,7 @@ msg "Setting up container OS..."
 sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
 locale-gen >/dev/null
 # apt-get -y purge openssh-{client,server} >/dev/null
-# apt-get autoremove >/dev/null
+apt-get autoremove >/dev/null
 
 # Update container OS
 msg "Updating container OS..."
@@ -79,7 +79,6 @@ cd /deconz_tmp >/dev/null
 wget https://github.com/marthoc/docker-deconz/raw/master/amd64/root/start.sh
 wget https://github.com/marthoc/docker-deconz/raw/master/amd64/root/firmware-update.sh
 wget http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
-
 
 # Customize container
 msg "Customizing container..."
