@@ -65,7 +65,7 @@ TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
 # Download setup script
-wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
+wget -qL https://github.com/Sthopeless/proxmox_docker_mqtt/raw/main/setup.sh
 
 # Detect modules and automatically load at boot
 load_module aufs
@@ -152,9 +152,7 @@ lxc.cap.drop:
 EOF
 
 # Set container description
-pct set $CTID -description "Access deCONZ interface using the following URL.
-
-http://<IP_ADDRESS>:8085"
+pct set $CTID -description "CPHA on fire!"
 
 # Set container timezone to match host
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
@@ -169,10 +167,9 @@ pct exec $CTID /setup.sh
 
 # Get network details and show completion message
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created deCONZ LXC to $CTID."
+info "Successfully created LXC deCONZ to $CTID."
 msg "
 
-Enjoy, containers available at:
-      DeCONZ: http://${IP}:8085
+Proxmox LXC deCONZ is ready, enjoy!
 
 "
