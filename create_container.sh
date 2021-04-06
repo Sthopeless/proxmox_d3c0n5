@@ -66,6 +66,7 @@ pushd $TEMP_DIR >/dev/null
 
 # Download setup scripts
 wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
+wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/start.sh
 wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
 
 
@@ -165,6 +166,7 @@ pct unmount $CTID && unset MOUNT
 msg "Starting LXC container..."
 pct start $CTID
 pct push $CTID setup.sh /setup.sh -perms 755
+pct push $CTID start.sh /start.sh -perms 755
 pct push $CTID deconz-2.10.04-qt5.deb /deconz.deb -perms 755
 pct exec $CTID /setup.sh
 
