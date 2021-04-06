@@ -138,7 +138,7 @@ else
   mkfs.ext4 $(pvesm path $ROOTFS) &>/dev/null
 fi
 ARCH=$(dpkg --print-architecture)
-HOSTNAME=Deconz
+HOSTNAME=deconz
 TEMPLATE_STRING="local:vztmpl/${TEMPLATE}"
 pct create $CTID $TEMPLATE_STRING -arch $ARCH -features nesting=1 \
   -hostname $HOSTNAME -net0 name=eth0,bridge=vmbr0,ip=dhcp -onboot 1 \
@@ -152,9 +152,9 @@ lxc.cap.drop:
 EOF
 
 # Set container description
-pct set $CTID -description "Access Portainer interface using the following URL.
+pct set $CTID -description "Access deCONZ interface using the following URL.
 
-http://<IP_ADDRESS>:9000"
+http://<IP_ADDRESS>:8085"
 
 # Set container timezone to match host
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
@@ -169,9 +169,10 @@ pct exec $CTID /setup.sh
 
 # Get network details and show completion message
 IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2}')
-info "Successfully created Portainer LXC to $CTID."
+info "Successfully created deCONZ LXC to $CTID."
 msg "
 
-Enjoy
+Enjoy, containers available at:
+      DeCONZ: http://${IP}:8085
 
 "
