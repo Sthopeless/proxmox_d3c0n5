@@ -23,42 +23,36 @@ function msg() {
   echo -e "$TEXT"
 }
 
-# Prepare container OS
-msg "Setting up container OS..."
-sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
-locale-gen >/dev/null
-apt-get -y purge openssh-{client,server} >/dev/null
-apt-get autoremove >/dev/null
+# # Prepare container OS
+# msg "Setting up container OS..."
+# sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
+# locale-gen >/dev/null
+# apt-get -y purge openssh-{client,server} >/dev/null
+# apt-get autoremove >/dev/null
 
 # Update container OS
 msg "Updating container OS..."
 apt-get update >/dev/null
 apt-get -qqy upgrade &>/dev/null
 
-# Install prerequisites
-msg "Installing prerequisites..."
-apt-get -qqy install \
-    curl &>/dev/null
-
-# deCONZ step1
-msg "deCONZ step #1"
-apt-get -qqy install \
-    kmod \
-    libcap2-bin \
-    libqt5core5a \
-    libqt5gui5 \
-    libqt5network5 \
-    libqt5serialport5 \
-    libqt5sql5 \
-    libqt5websockets5 \
-    libqt5widgets5 \
-    lsof \
-    sqlite3 \
-    tigervnc-standalone-server \
-    tigervnc-common \
-    wmii \
-    xfonts-base \
-    xfonts-scalable &>/dev/null
+# deconz step 1
+msg "Deconz step1..."
+apt-get -qqy install kmod
+apt-get -qqy libcap2-bin
+apt-get -qqy libqt5core5a
+apt-get -qqy libqt5gui5
+apt-get -qqy libqt5network5
+apt-get -qqy libqt5serialport5
+apt-get -qqy libqt5sql5
+apt-get -qqy libqt5websockets5
+apt-get -qqy libqt5widgets5
+apt-get -qqy lsof
+apt-get -qqy sqlite3
+apt-get -qqy tigervnc-standalone-server
+apt-get -qqy tigervnc-common
+apt-get -qqy wmii
+apt-get -qqy xfonts-base
+apt-get -qqy xfonts-scalable &>/dev/null
 
 # deconz step 2
 msg "Deconz step2..."
@@ -75,7 +69,6 @@ msg "Deconz step3..."
 FOLDER_TMPDECONZ='/deconz_tmp'
 mkdir -p $(dirname $FOLDER_TMPDECONZ)
 wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb -O /deconz_tmp/deconz.deb
-# wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
 
 # Customize container
 msg "Customizing container..."
