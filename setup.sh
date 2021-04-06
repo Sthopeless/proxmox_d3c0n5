@@ -69,7 +69,10 @@ strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >
 msg "[   deCONZ step #3...   ]"
 DECONZ_OTAU="/root/otau"
 mkdir -p $(dirname $DECONZ_OTAU)
-echo "@reboot sh /start.sh &" | tee -a /var/spool/cron/root
+DECONZ_CRON="/var/spool/cron/root"
+cat << EOF > $DECONZ_CRON
+@reboot sh /start.sh &
+EOF
 chmod +x /deconz_tmp/firmware-update.sh &>/dev/null
 dpkg -i /deconz.deb &>/dev/null
 rm -f /deconz.deb &>/dev/null
