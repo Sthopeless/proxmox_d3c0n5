@@ -27,13 +27,15 @@ function msg() {
 msg "Setting up container OS..."
 sed -i "/$LANG/ s/\(^# \)//" /etc/locale.gen
 locale-gen >/dev/null
+apt-get update >/dev/null
+apt-get -qqy upgrade &>/dev/null
 # apt-get -y purge openssh-{client,server} >/dev/null
 apt-get autoremove >/dev/null
 
-# Update container OS
-msg "Updating container OS..."
-apt-get update >/dev/null
-apt-get -qqy upgrade &>/dev/null
+# # Update container OS
+# msg "Updating container OS..."
+# apt-get update >/dev/null
+# apt-get -qqy upgrade &>/dev/null
 
 # # Install prerequisites
 # msg "Installing prerequisites..."
