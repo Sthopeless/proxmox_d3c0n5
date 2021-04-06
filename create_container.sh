@@ -64,8 +64,10 @@ function load_module() {
 TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
-# Download setup script
-wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
+# Download setup scripts
+wget -qL https://github.com/Sthopeless/proxmox_docker_mqtt/raw/main/setup.sh
+wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
+
 
 # Detect modules and automatically load at boot
 load_module aufs
@@ -163,6 +165,7 @@ pct unmount $CTID && unset MOUNT
 msg "Starting LXC container..."
 pct start $CTID
 pct push $CTID setup.sh /setup.sh -perms 755
+pct push $CTID deconz-2.10.04-qt5.deb /deconz.deb -perms 755
 pct exec $CTID /setup.sh
 
 # Get network details and show completion message
