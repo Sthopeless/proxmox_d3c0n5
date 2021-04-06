@@ -65,7 +65,7 @@ TEMP_DIR=$(mktemp -d)
 pushd $TEMP_DIR >/dev/null
 
 # Download setup script
-wget -qL https://github.com/Sthopeless/proxmox_docker_mqtt/raw/main/setup.sh
+wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
 
 # Detect modules and automatically load at boot
 load_module aufs
