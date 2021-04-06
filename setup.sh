@@ -59,14 +59,14 @@ msg "[      Deconz step #2...      ]"
 apt-get clean  >/dev/null
 rm -rf /var/lib/apt/lists/*
 apt-get update >/dev/null
-apt-get -qqy install binutils >/dev/null 
-apt-get clean >/dev/null 
+apt-get -qqy install binutils >/dev/null
+apt-get clean >/dev/null
 rm -rf /var/lib/apt/lists/*
-strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
 
 # deconz step 3
 msg "[      Deconz step #3...      ]"
-FOLDER_DECONZ="/deconz_tmp/"
+FOLDER_DECONZ="/conbee"
 mkdir -p $(dirname $FOLDER_DECONZ)
 cd $FOLDER_DECONZ
 wget -qqL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
