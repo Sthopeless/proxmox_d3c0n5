@@ -155,7 +155,13 @@ lxc.cap.drop:
 EOF
 
 # Set container description
-pct set $CTID -description "CPHA on fire!"
+pct set $CTID -description "CPHA on fire!
+To start deCONZ on boot type: 
+crontab -e
+and add at the end: 
+@reboot sh /scripts/start.sh &
+Reboot and enjoy!
+"
 
 # Set container timezone to match host
 MOUNT=$(pct mount $CTID | cut -d"'" -f 2)
@@ -175,6 +181,5 @@ IP=$(pct exec $CTID ip a s dev eth0 | sed -n '/inet / s/\// /p' | awk '{print $2
 info "Successfully created LXC deCONZ to $CTID."
 msg "
 
-Proxmox LXC deCONZ is ready, enjoy!
-
+deCONZ is ready!
 "
