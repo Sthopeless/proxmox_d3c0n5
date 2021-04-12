@@ -36,7 +36,7 @@ apt-get update >/dev/null
 apt-get -qqy upgrade &>/dev/null
 
 # deCONZ step 1
-msg "[   deCONZ step #1...   ]"
+msg "[Installing deCONZ dependencies...]"
 apt-get -qqy install curl >/dev/null
 apt-get -qqy install kmod >/dev/null
 apt-get -qqy install libcap2-bin >/dev/null
@@ -56,7 +56,7 @@ apt-get -qqy install xfonts-base >/dev/null
 apt-get -qqy install xfonts-scalable &>/dev/null
 
 # deCONZ step 2
-msg "[   deCONZ step #2...   ]"
+msg "[Preparing for deCONZ installation...]"
 apt-get clean  >/dev/null
 rm -rf /var/lib/apt/lists/*
 apt-get update >/dev/null
@@ -66,13 +66,9 @@ rm -rf /var/lib/apt/lists/*
 strip --remove-section=.note.ABI-tag /usr/lib/x86_64-linux-gnu/libQt5Core.so.5 >/dev/null
 
 # deCONZ step 3
-msg "[   deCONZ step #3...   ]"
-DECONZ_OTAU="/root/otau"
-mkdir -p $(dirname $DECONZ_OTAU)
-DECONZ_CRON="/var/spool/cron/root"
-cat << EOF > $DECONZ_CRON
-@reboot sh /start.sh &
-EOF
+msg "[Installing deCONZ...]"
+CRONJOB_ADD="@reboot sh /scripts/start.sh &"
+echo $CRONJOB_ADD >> /etc/crontab &>/dev/null
 chmod +x /start.sh &>/dev/null
 dpkg -i /deconz.deb &>/dev/null
 rm -f /deconz.deb &>/dev/null
