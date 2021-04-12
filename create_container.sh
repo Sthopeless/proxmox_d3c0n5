@@ -69,7 +69,6 @@ wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/setup.sh
 wget -qL https://github.com/Sthopeless/proxmox_d3c0n5/raw/main/start.sh
 wget -qL http://deconz.dresden-elektronik.de/ubuntu/stable/deconz-2.10.04-qt5.deb
 
-
 # Detect modules and automatically load at boot
 load_module aufs
 load_module overlay
